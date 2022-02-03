@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8" />
+  <!-- Set correct scaling for all devices -->
+  <meta name="viewport" content="width=device-width,maximum-scale=1.0,user-scalable=0" />
+  <!-- Indicate app can be saved to homescreen -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+
+  <link rel="icon" href="/favicon-32.png" sizes="32x32">
+  <link rel="icon" href="/favicon-192.png" sizes="192x192">
+
+
+  <title>LeadConduit</title>
+
+  <!-- HTML5 Shim -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <script type="text/javascript">
+    window.onload = function(){
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      document.body.appendChild(script);
+      script.onerror = function() {
+        document.querySelector('.app-loading .loading-indicator').remove();
+        var msg = document.querySelector('.app-loading .message');
+        if (msg) {
+          msg.innerHTML = 'There was an issue loading the application.';
+        }
+      };
+    }
+  </script>
+
+</head>
+<body>
+  <div class="app-loading">
+    <div class="content">
+      <div class="logo"></div>
+      <div class="loading-indicator"></div>
+      <div class="message">Loading...</div>
+    </div>
+  </div>
+  <div class="app" ui-view></div>
+</body>
+</html>
